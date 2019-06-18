@@ -2,9 +2,30 @@
 <html>
 <head>
 	<title>Cinema Ticketing App</title>
+	<script>
+		function arrangeSeats()
+		{
+			var a = 0;
+			var noOfChairs = chairs.value;
+			var iHTML = "<table border = 1><tr>";
+			for(var i = 1; i <= noOfChairs; i++)
+			{
+				a++;
+				iHTML += "<td><img width = 180 src='images/chair.jpg'></td>";
+				if(a == 7)
+				{
+					iHTML += "</tr><tr>";
+					a = 0;
+				}
+			}
+			iHTML += "</tr></table>";
+			hall.innerHTML = iHTML;
+		}
+
+	</script>
 </head>
 <body>
-Arrange Sits <input type="text" name=""> <input type="button" value="Arrange" name=""><br />
+Arrange Sits <input type="text" name="" id="chairs"> <input type="button" value="Arrange" name="" onclick="arrangeSeats()"><br />
 Allocate Sit <input type="text" name=""> to <input type="text" name=""> <input type="button" value="Allocate" name=""><br />
 <div id="hall"> </div>
 
