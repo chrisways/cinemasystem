@@ -7,29 +7,35 @@
 		var viewers = [];
 		var seat;
 		var viewername;
+		var st = true;
 		function allocateSeat()
 		{
 			 viewername = v.value;
 			seat = s.value;
+			noOfChairs[s.value]=v.value;
 			arrangeSeats();
 		}
 
 		function arrangeSeats()
 		{
 			var a = 0;
-			noOfChairs = chairs.value;
+			if(st)
+			{
+				noOfChairs = new Array(Number(chairs.value));
+				st = false;
+			}
 			var iHTML = "<table border = 1><tr>";
-			for(var i = 1; i <= noOfChairs; i++)
+			for(var i = 1; i <= noOfChairs.length; i++)
 			{
 				a++;
 				if( a == seat)
 				{
-					iHTML += "<td><img width = 180 src='images/chair.jpg'><br />"+viewername+"</td>";
+					iHTML += "<td><img width = 180 src='images/chair.jpg'><br />"+noOfChairs[i]+"</td>";
 					seat = 0;
 				}
 				else
 				{
-					iHTML += "<td><img width = 180 src='images/chair.jpg'></td>";
+					iHTML += "<td><img width = 180 src='images/chair.jpg'>"+noOfChairs[i]+"</td>";
 				}
 				if(a == 7)
 				{
